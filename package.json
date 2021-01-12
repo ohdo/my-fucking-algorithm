@@ -1,0 +1,16 @@
+{
+  "name": "my-fucking-algorithm",
+  "version": "1.0.0",
+  "description": "English version repo and Gitbook is on [english branch](https://github.com/labuladong/fucking-algorithm/tree/english). Just enjoy：)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node leetcode算法练习/322零钱兑换.js --inspect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://hub.fastgit.org/ohdo/my-fucking-algorithm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

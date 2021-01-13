@@ -2,9 +2,9 @@
  * @Author: MIHUIYI689
  * @Date: 2021-01-12 20:45:43
  * @LastEditors: MIHUIYI689
- * @LastEditTime: 2021-01-13 13:51:50
- * @Description: TODO: 未完成
- * @FilePath: /my-fucking-algorithm/leetcode算法练习/300.最长递增子序列.js
+ * @LastEditTime: 2021-01-13 16:53:29
+ * @Description: File description
+ * @FilePath: /my-fucking-algorithm/leetcode算法练习/动态规划/300.最长递增子序列.js
  */
 /**
  * @param {number[]} nums

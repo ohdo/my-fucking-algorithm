@@ -4,7 +4,7 @@
   "description": "English version repo and Gitbook is on [english branch](https://github.com/labuladong/fucking-algorithm/tree/english). Just enjoy：)",
   "main": "index.js",
   "scripts": {
-    "test": "node leetcode算法练习/322零钱兑换.js --inspect"
+    "test": "node leetcode算法练习/二分搜索/34.在排序数组中查找元素的第一个和最后一个位置.js --inspect"
   },
   "repository": {
     "type": "git",

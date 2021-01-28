@@ -38,7 +38,7 @@ person.Symbol = Symbol('mark');
  * 1.支持性：函数 正则 循环引用 Date 正则表达式 Symbol
  * 2.对象类型支持不够多（Buffer，Map，Set等都不支持）
  * 3.存在递归爆栈的风险
- * 如果要解决这些问题，实现一个”完美“的深拷贝，只能求教上百行代码的 Lodash.cloneDeep() 了 
+ * 如果要解决这些问题，实现一个”完美“的深拷贝，只能求教上百行代码的 Lodash.cloneDeep() 
  * https://github.com/lodash/lodash/blob/master/cloneDeep.js
  */
 {

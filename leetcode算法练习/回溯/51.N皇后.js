@@ -14,11 +14,11 @@
  * 2.指定x 然后遍历y 能添加的就往数组中添加
  * 3.能添加的条件 不在同一行或者同一列 且不在对角线上
  */
-var solveNQueens = function(n) {
+var solveNQueens = function (n) {
   const res = [];
   const yMap = new Set();
   const abs = Math.abs;
-  const indexToStr = (index) => {
+  const indexToStr = index => {
     const arr = new Array(n).fill('.');
     arr[index] = 'Q';
     return arr.join('');

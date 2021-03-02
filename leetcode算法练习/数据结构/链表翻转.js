@@ -8,6 +8,10 @@
  */
 
 /**
+ * 92.反转链表II（中等）.js
+ */
+
+/**
  * @param {ListNode} head
  * @return {ListNode}
  */
@@ -28,33 +32,33 @@ var reverse = function (head) {
 var reverseN = function (head, n) {
   let successor = null;
   const reverseList = (head, n) => {
-    if (n == 1) { 
+    if (n == 1) {
       // 记录第 n + 1 个节点
       successor = head.next;
       return head;
     }
     // 以 head.next 为起点，需要反转前 n - 1 个节点
     const last = reverseList(head.next, n - 1);
-  
+
     head.next.next = head;
     // 让反转之后的 head 节点和后面的节点连起来
     head.next = successor;
     return last;
-  }
+  };
   return reverseList(head, n);
-}
+};
 
 // 反转 [M, N]区间
 var reverseBetween = function (head, m, n) {
-  if (m===1) {
+  if (m === 1) {
     return reverseN(head, n);
   }
   head.next = reverseBetween(head.next, m - 1, n - 1);
   return head;
-}
+};
 // 测试数据
 // 1->2->3->4->5->null
-function createNode (arr = [1,2,3,4,5]) {
+function createNode(arr = [1, 2, 3, 4, 5]) {
   let h = new ListNode(null);
   let tem = h;
   arr.forEach(v => {
@@ -94,5 +98,35 @@ function showLink(head) {
   const h = createNode();
   showLink(h);
   const h2 = reverseBetween(h, 2, 4);
+  showLink(h2);
+}
+
+/**
+ * 25.K个一组翻转链表（困难）
+ */
+function reverseKGroup(head, k) {
+  let endNode = head;
+  for (i = 0; i < k; i++) {
+    if (endNode === null) return head;
+    endNode = endNode.next;
+  }
+  let p = null,
+    c = head,
+    n = head;
+  while (c !== endNode) {
+    n = c.next;
+    c.next = p;
+    p = c;
+    c = n;
+  }
+  head.next = reverseKGroup(endNode, k);
+  return p;
+}
+
+{
+  console.log('K 个一组翻转链表:');
+  const h = createNode();
+  showLink(h);
+  const h2 = reverseKGroup(h, 2);
   showLink(h2);
 }

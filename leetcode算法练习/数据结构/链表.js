@@ -130,3 +130,61 @@ function reverseKGroup(head, k) {
   const h2 = reverseKGroup(h, 2);
   showLink(h2);
 }
+
+/**
+ * 234. 回文链表
+ */
+
+function isPalindrome(head) {
+  if (head === null) return false;
+  // 翻转链表 @method
+  const reverseList = head => {
+    let p = null,
+      c = head,
+      tem = head;
+    while (c !== null) {
+      tem = c.next;
+      c.next = p;
+      p = c;
+      c = tem;
+    }
+    return p;
+  };
+  // 快慢指针获取中间结点 @method
+  const getHalfNode = head => {
+    let slow = (fast = head);
+    while (fast.next != null && fast.next.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow;
+  };
+  // 两节点是否相同 @method
+  const isSameDirection = (n1, n2) => {
+    let node1 = n1,
+      node2 = n2;
+    while (node2 !== null) {
+      if (node1.val !== node2.val) return false;
+      node1 = node1.next;
+      node2 = node2.next;
+    }
+    return true;
+  };
+  // 1.获取中间结点
+  const halfNode = getHalfNode(head);
+  // 2.反转中间结点之后的结点
+  const rightNode = reverseList(halfNode.next);
+  // 3.回文判断 两个节点的值是否一直相同
+  const result = isSameDirection(head, rightNode);
+  // 4.判断结束 还原反转结点
+  halfNode.next = reverseList(rightNode);
+  return result;
+}
+
+{
+  console.log('回文链表:');
+  const h = createNode([1, 2, 1]);
+  showLink(h);
+  const h2 = isPalindrome(h);
+  console.log(h2);
+}

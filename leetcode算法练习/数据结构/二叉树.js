@@ -2,14 +2,14 @@
  * @Author: MIHUIYI689
  * @Date: 2021-02-26 11:51:04
  * @LastEditors: MIHUIYI689
- * @LastEditTime: 2021-02-26 14:01:15
+ * @LastEditTime: 2021-03-04 15:45:52
  * @Description: File description
- * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/295.数据流的中位数.js
+ * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/二叉树.js
  */
 import { createBinaryTree, showBinaryTree } from './common.js';
 
 /**
- * 226.翻转二叉树
+ * NOTE: 226.翻转二叉树
  */
 function invertTree(root) {
   if (root === null) {
@@ -33,7 +33,7 @@ function invertTree(root) {
 }
 
 /**
- * 116.填充每个节点的下一个右侧节点指针
+ * NOTE: 116.填充每个节点的下一个右侧节点指针
  */
 function connect(tree) {
   if (tree === null) return null;

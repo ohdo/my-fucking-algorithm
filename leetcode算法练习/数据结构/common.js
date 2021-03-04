@@ -1,3 +1,11 @@
+/*
+ * @Author: MIHUIYI689
+ * @Date: 2021-03-04 15:45:15
+ * @LastEditors: MIHUIYI689
+ * @LastEditTime: 2021-03-04 15:46:17
+ * @Description: File description
+ * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/common.js
+ */
 const isUndefined = val => val === undefined;
 /**
  * 链表结点

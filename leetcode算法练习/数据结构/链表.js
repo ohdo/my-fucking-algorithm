@@ -2,23 +2,16 @@
  * @Author: MIHUIYI689
  * @Date: 2021-02-26 09:25:37
  * @LastEditors: MIHUIYI689
- * @LastEditTime: 2021-02-26 11:45:42
+ * @LastEditTime: 2021-03-04 17:05:21
  * @Description: File description
- * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/92.反转链表II（中等）.js
+ * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/链表.js
  */
+import { createNode, showLink } from './common.js';
 
 /**
  * 92.反转链表II（中等）.js
  */
 
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
 // 基础反转
 var reverse = function (head) {
   if (head.next == null) return head;
@@ -56,26 +49,6 @@ var reverseBetween = function (head, m, n) {
   head.next = reverseBetween(head.next, m - 1, n - 1);
   return head;
 };
-// 测试数据
-// 1->2->3->4->5->null
-function createNode(arr = [1, 2, 3, 4, 5]) {
-  let h = new ListNode(null);
-  let tem = h;
-  arr.forEach(v => {
-    tem.next = new ListNode(v);
-    tem = tem.next;
-  });
-  return h.next;
-}
-function showLink(head) {
-  let temp = head;
-  const res = [];
-  while (temp != null) {
-    res.push(temp.val);
-    temp = temp.next;
-  }
-  console.log(res.join(' -> '));
-}
 
 {
   console.log('基础反转:');
@@ -104,9 +77,9 @@ function showLink(head) {
 /**
  * 25.K个一组翻转链表（困难）
  */
-function reverseKGroup(head, k) {
+function reverseKGroup (head, k) {
   let endNode = head;
-  for (i = 0; i < k; i++) {
+  for (let i = 0; i < k; i++) {
     if (endNode === null) return head;
     endNode = endNode.next;
   }
@@ -135,7 +108,7 @@ function reverseKGroup(head, k) {
  * 234. 回文链表
  */
 
-function isPalindrome(head) {
+function isPalindrome (head) {
   if (head === null) return false;
   // 翻转链表 @method
   const reverseList = head => {
@@ -152,7 +125,8 @@ function isPalindrome(head) {
   };
   // 快慢指针获取中间结点 @method
   const getHalfNode = head => {
-    let slow = (fast = head);
+    let slow = head,
+      fast = head;
     while (fast.next != null && fast.next.next != null) {
       slow = slow.next;
       fast = fast.next.next;
@@ -183,7 +157,7 @@ function isPalindrome(head) {
 
 {
   console.log('回文链表:');
-  const h = createNode([1, 2, 1]);
+  const h = createNode([ 1, 2, 1 ]);
   showLink(h);
   const h2 = isPalindrome(h);
   console.log(h2);

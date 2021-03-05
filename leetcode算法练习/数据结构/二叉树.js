@@ -2,11 +2,11 @@
  * @Author: MIHUIYI689
  * @Date: 2021-02-26 11:51:04
  * @LastEditors: MIHUIYI689
- * @LastEditTime: 2021-03-04 15:45:52
+ * @LastEditTime: 2021-03-04 17:57:51
  * @Description: File description
  * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/二叉树.js
  */
-import { createBinaryTree, showBinaryTree } from './common.js';
+import { createBinaryTree, showBinaryTree, TreeNode } from './common.js';
 
 /**
  * NOTE: 226.翻转二叉树
@@ -24,13 +24,13 @@ function invertTree(root) {
   return root;
 }
 
-{
-  console.log('翻转二叉树:');
-  const tree = createBinaryTree([4, 2, 7, 1, 3, 6, 9]);
-  showBinaryTree(tree);
-  invertTree(tree);
-  showBinaryTree(tree);
-}
+// {
+//   console.log('翻转二叉树:');
+//   const tree = createBinaryTree([4, 2, 7, 1, 3, 6, 9]);
+//   showBinaryTree(tree);
+//   invertTree(tree);
+//   showBinaryTree(tree);
+// }
 
 /**
  * NOTE: 116.填充每个节点的下一个右侧节点指针
@@ -62,3 +62,31 @@ function connect(tree) {
 //   invertTree(tree);
 //   showBinaryTree(tree);
 // }
+
+/**
+ * 654. 最大二叉树
+ */
+function constructMaximumBinaryTree(nums) {
+  // 构建二叉树
+  const buildTree  = (arr, left, right) => {
+      if (left > right) return null;
+      // 找到根节点
+      let max = Number.MIN_SAFE_INTEGER, index = -1;
+      for (let i = left; i <= right; i++) {
+          const val = arr[i];
+          if (val > max) {
+              index = i;
+              max = val
+          }
+      }
+      const root = new TreeNode(max);
+      root.left = buildTree(arr, left, index - 1);
+      root.right = buildTree(arr, index + 1, right);
+      return root;
+  }
+  return buildTree(nums, 0, nums.length - 1);
+};
+
+{
+  console.log(constructMaximumBinaryTree([3,2,1,6,0,5]));
+}

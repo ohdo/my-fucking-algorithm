@@ -2,7 +2,7 @@
  * @Author: MIHUIYI689
  * @Date: 2021-03-04 15:45:15
  * @LastEditors: MIHUIYI689
- * @LastEditTime: 2021-03-04 15:46:17
+ * @LastEditTime: 2021-03-05 14:31:59
  * @Description: File description
  * @FilePath: /my-fucking-algorithm/leetcode算法练习/数据结构/common.js
  */
@@ -48,7 +48,7 @@ export function TreeNode(val, left, right, next) {
   this.val = isUndefined(val) ? 0 : val;
   this.left = left || null;
   this.right = right || null;
-  this.next = next || null;
+  // this.next = next || null;
 }
 
 /**
@@ -92,3 +92,42 @@ export function createBinaryTree(arr = [4, 2, 7, 1, 3, 6, 9]) {
 export function showBinaryTree(tree) {
   console.log(tree);
 }
+
+/**
+ * Encodes a tree to a single string.
+ *
+ * @param {TreeNode} root
+ * @return {array}
+ */
+export function serialize(root) {
+  const serializeNode = (node) => {
+    if (node === null) return '#';
+    const left = serializeNode(node.left);
+    const right = serializeNode(node.right);
+    return `${node.val},${left},${right}`;
+  };
+  return serializeNode(root);
+};
+
+/**
+ * Decodes your encoded data to tree.
+ *
+ * @param {string} str
+ * @return {TreeNode}
+ */
+export function deserialize (str) {
+  if (str === '') return null;
+  const arr = str.split(',');
+  const deserializeList = list => {
+    const rootVal = list.shift();
+    if (rootVal === '#') return null;
+    if (rootVal === undefined) return null;
+    const root = new TreeNode(+rootVal);
+    root.left = deserializeList(list);
+    root.right = deserializeList(list);
+    return root;
+  };
+  return deserializeList(arr);
+};
+
+console.log(serialize(deserialize("1,2,#,4,#,#,3,#,#")));
